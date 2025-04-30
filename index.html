@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>To Do List App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+  </head>
+  <style>
+    .btn-responsive {
+      width: 250px;
+    }
+
+    .checkbox {
+      scale: 1.5;
+      cursor: pointer;
+    }
+
+    @media (max-width: 480px) {
+      .btn-responsive {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <body>
+    <main
+      class="container mt-5 d-flex flex-column flex-lg-row align-items-center justify-content-center gap-5"
+    >
+      <section
+        class="col-12 col-lg-4 p-4 card rounded-3"
+        style="background-color: #1e739a"
+      >
+        <h1 class="fw-bold text-white fs-2 text-center">TO DO LIST📝</h1>
+        <p class="fw-medium text-white fs-5 text-center">
+          Buat dan kelola kegiatan sehari-hari dengan mudah dan efektif!
+        </p>
+        <ol class="text-left fw-normal text-white fs-5">
+          <li>Isi Nama Kegiatan dan Tanggal Kegiatan terlebih dahulu.</li>
+          <li>Klik "Simpan" untuk menyimpan kegiatan.</li>
+          <li>
+            Centang pada checkbox untuk menandai kegiatan sebagai selesai.
+          </li>
+          <li>Klik "Edit" untuk mengedit kegiatan.</li>
+          <li>Klik "Hapus" untuk menghapus kegiatan.</li>
+        </ol>
+      </section>
+      <section
+        class="col-12 col-lg-8 p-4 card rounded-3 bg-subtle"
+        style="background-color: #e9f1f5"
+      >
+        <form id="activityForm" class="gap-3 d-flex flex-column">
+          <div class="row align-items-center">
+            <div class="col-12 col-md-4">
+              <label for="text" class="form-label fw-bold fs-6 text-dark"
+                >Nama Kegiatan</label
+              >
+            </div>
+            <div class="col-12 col-md-8">
+              <input
+                type="text"
+                id="inputText"
+                class="form-control fw-bold fs-6 text-dark"
+                required
+              />
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-12 col-md-4">
+              <label for="date" class="form-label fw-bold fs-6 text-dark"
+                >Tanggal Kegiatan</label
+              >
+            </div>
+            <div class="col-12 col-md-8">
+              <input
+                type="date"
+                id="inputDate"
+                class="form-control fw-bold fs-6 text-dark"
+                required
+              />
+            </div>
+          </div>
+          <div class="d-flex justify-content-end mt-2">
+            <button
+              type="submit"
+              class="btn btn-primary btn-responsive fw-semibold fs-6 text-white"
+            >
+              Simpan
+            </button>
+          </div>
+        </form>
+
+        <div class="table-responsive mt-5">
+          <table class="table table-bordered">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Nama Kegiatan</th>
+                <th scope="col">Tanggal Kegiatan</th>
+                <th scope="col">Selesai</th>
+                <th scope="col">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="activityTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
