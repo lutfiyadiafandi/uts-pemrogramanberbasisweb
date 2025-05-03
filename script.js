@@ -1,21 +1,27 @@
+// Variable untuk mengakses elemen HTML
 const form = document.getElementById("activityForm");
 const inputText = document.getElementById("inputText");
 const inputDate = document.getElementById("inputDate");
 const tableBody = document.getElementById("activityTableBody");
 
+// Mendapatkan data dari localStorage
 let activities = JSON.parse(localStorage.getItem("activities")) || [];
+// Inisialisasi variabel
 let editIndex = -1;
 
+// Fungsi untuk menyimpan data ke localStorage
 function saveToLocalStorage() {
   localStorage.setItem("activities", JSON.stringify(activities));
 }
 
+// Fungsi untuk mengubah format tanggal menjadi ID
 function formatTanggal(dateString) {
   const options = { day: "numeric", month: "long", year: "numeric" };
   const date = new Date(dateString);
   return date.toLocaleDateString("id-ID", options);
 }
 
+// Fungsi untuk menampilkan data ke dalam tabel
 function renderTable() {
   tableBody.innerHTML = "";
   activities.forEach((activity, index) => {
@@ -50,6 +56,7 @@ function renderTable() {
   });
 }
 
+// Event listener untuk form
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -74,6 +81,7 @@ form.addEventListener("submit", function (e) {
   form.reset();
 });
 
+// Fungsi untuk mengedit kegiatan
 function editActivity(index) {
   inputText.value = activities[index].name;
   inputDate.value = activities[index].date;
@@ -81,6 +89,7 @@ function editActivity(index) {
   inputText.focus();
 }
 
+// Fungsi untuk menghapus kegiatan
 function deleteActivity(index) {
   if (confirm("Apakah Anda yakin ingin menghapus kegiatan ini?")) {
     activities.splice(index, 1);
@@ -89,10 +98,12 @@ function deleteActivity(index) {
   }
 }
 
+// Fungsi untuk menandai kegiatan sebagai selesai
 function toggleComplete(index) {
   activities[index].completed = !activities[index].completed;
   saveToLocalStorage();
   renderTable();
 }
 
+// Menampilkan data ke dalam tabel
 renderTable();
